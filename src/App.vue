@@ -1,28 +1,36 @@
 <template>
-  <div id="app">
-    <!--<img src="./assets/logo.png">-->
-    <hello></hello>
+  <div>
+    <v-header></v-header>
+    <div class="tab border-1px">
+      <div class="tab-item"><router-link to="/goods">商品</router-link></div>
+      <div class="tab-item"><router-link to="/ratings">评论</router-link></div>
+      <div class="tab-item"><router-link to="/seller">商家</router-link></div>
+    </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-    import Hello from './components/Hello'
-
+    import header from './components/header/header.vue';
     export default {
-        name: 'app',
         components: {
-            Hello
+            'v-header': header
         }
-    }
+    };
 </script>
 
-<style>
-    #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+<style lang="scss" rel="stylesheet/scss">
+  @import './common/sass/mixin';
+    .tab {
+      width: 100%;
+      display: flex;
+      height: 40px;
+      line-height: 40px;
+      @include border-1px(rgba(7,17,27,0.1));
+      > .tab-item {
+        flex: 1;
         text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
+      }
     }
+
 </style>

@@ -15,7 +15,7 @@ var port = process.env.PORT || config.dev.port
 var proxyTable = config.dev.proxyTable
 
 var app = express()
-    // mock入口 
+    // mock入口
 var appData = require('../data.json'),
     seller = appData.seller,
     goods = appData.goods,

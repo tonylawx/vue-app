@@ -24,6 +24,7 @@ module.exports = {
         "no-unused-vars": 0,
         "camelcase": 0,
         "no-underscore-dangle": 0,
-        "space-before-function-paren": 0
+        "space-before-function-paren": 0,
+        "semi": ['error', 'always']
     }
-}
+};
