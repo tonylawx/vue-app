@@ -29,6 +29,7 @@
             if (response.errno === ERR_OK) {
               this.seller = response.data;
               console.log(this.seller);
+              console.log(this.seller.supports[0].type);
             }
           });
         },
