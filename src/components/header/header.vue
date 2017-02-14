@@ -99,12 +99,11 @@
 </script>
 <style lang="scss" rel="stylesheet/scss">
   @import "../../common/sass/mixin";
-
   .header {
     position: relative;
+    overflow: hidden;
     color: #fff;
     background: rgba(7, 17, 27, 0.5);
-    overflow: hidden;
     .content-wrapper {
       position: relative;
       padding: 24px 12px 18px 24px;
@@ -120,11 +119,9 @@
       }
       // 内容
       .content {
-        display: inline-block;
-        font-size: 14px;
-        margin-left: 16px;
         vertical-align: top;
-        margin-bottom: 10px;
+        display: inline-block;
+        margin-left: 16px;
         .title {
           margin: 2px 0 8px 0;
           .brand {
@@ -139,6 +136,7 @@
           .name {
             margin-left: 6px;
             font-size: 16px;
+            line-height: 18px;
             font-weight: bold;
           }
         }
@@ -272,7 +270,7 @@
             width: 100%;
           }
           .star-warpper {
-            margin-top: 10px;
+            margin-top: 18px;
             padding: 2px 0;
             text-align: center;
           }
