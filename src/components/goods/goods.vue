@@ -2,7 +2,8 @@
   <div class="goods">
     <div class="menu-warpper" ref=menuWarpper>
       <ul>
-        <li v-for="(item,$index) in goods" class="menu-item" :class="{'current':currentIndex===$index}">
+        <li v-for="(item,$index) in goods" class="menu-item" :class="{'current':currentIndex===$index}"
+            @click="selectMenu($index,$event)">
           <span class="text border-1px">
             <span v-show="item.type>0" class="icon" :class="classMap[item.type]"></span>{{item.name}}
           </span>
@@ -25,7 +26,7 @@
                   <span class="count">月售{{food.sellCount}}份</span><span>好评率{{food.rating}}%</span>
                 </div>
                 <div class="price">
-                  <span class="now">￥{{food.price}}</span><span v-show='food.oldPrice'
+                  <span class="now">￥{{food.price}}</span><span v-show="food.oldPrice"
                                                                 class="old">￥{{food.oldPrice}}</span>
                 </div>
               </div>
@@ -34,10 +35,13 @@
         </li>
       </ul>
     </div>
+    <shopcart :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
   </div>
+
 </template>
 <script type='text/ecmascript-6'>
   import BScroll from "better-scroll";
+  import shopcart from "../shopcart/shopcart";
   const ERR_OK = 0;
   export default {
     props: {
@@ -66,8 +70,18 @@
       });
     },
     methods: {
+      selectMenu(index, event) {
+        if (!event._constructed) {
+          return;
+        }
+        let foodList = this.$refs.foodsWarpper.getElementsByClassName("food-list-hook");
+        let el = foodList[index];
+        this.foodsScroll.scrollToElement(el, 300);
+      },
       _initScroll() {
-        this.menuScroll = new BScroll(this.$refs.menuWarpper, {});
+        this.menuScroll = new BScroll(this.$refs.menuWarpper, {
+          click: true
+        });
         this.foodsScroll = new BScroll(this.$refs.foodsWarpper, {
           probeType: 3
         });
@@ -96,12 +110,13 @@
             return i;
           }
         }
-        console.log(1);
         return 0;
       }
+    },
+    components: {
+      shopcart
     }
   };
-
 </script>
 <style lang="scss" rel="stylesheet/scss">
   @import "../../common/sass/mixin";

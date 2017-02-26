@@ -6,13 +6,12 @@
       <div class="tab-item"><router-link to="/ratings">评论</router-link></div>
       <div class="tab-item"><router-link to="/seller">商家</router-link></div>
     </div>
-    <router-view></router-view>
+    <router-view :seller="seller"></router-view>
   </div>
 </template>
 
 <script>
     import header from './components/header/header.vue';
-
     const ERR_OK = 0;
     export default {
         // header数据
@@ -50,5 +49,4 @@
         text-align: center;
       }
     }
-
 </style>
