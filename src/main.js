@@ -22,6 +22,10 @@ const router = new VueRouter({
       component: App,
       children: [
         {
+          path: '/',
+          component: goods
+        },
+        {
           path: '/goods',
           component: goods
         },
@@ -41,5 +45,8 @@ const router = new VueRouter({
 const app = new Vue({
   el: '#app',
   router: router,
+  data: {
+    eventHub: new Vue()
+  },
   template: '<router-view></router-view>'
 });

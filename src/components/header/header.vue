@@ -63,7 +63,6 @@
         </div>
       </div>
     </transition>
-
   </div>
 </template>
 <script type='text/ecmascript-6'>
@@ -99,6 +98,7 @@
 </script>
 <style lang="scss" rel="stylesheet/scss">
   @import "../../common/sass/mixin";
+
   .header {
     position: relative;
     overflow: hidden;
@@ -249,13 +249,13 @@
       top: 0;
       left: 0;
       background: rgba(7, 17, 27, 0.8);
-      backdrop-filter:blur(10px);
+      backdrop-filter: blur(10px);
       &.fade-enter-active, &.fade-leave-active {
         transition: opacity .5s
       }
       &.fade-enter, &.fade-leave-active {
-        opacity: 0
-      }
+         opacity: 0
+       }
       .deatil-warpper {
         width: 100%;
         min-height: 100%;

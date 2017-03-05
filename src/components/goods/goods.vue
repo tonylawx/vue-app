@@ -29,19 +29,24 @@
                   <span class="now">￥{{food.price}}</span><span v-show="food.oldPrice"
                                                                 class="old">￥{{food.oldPrice}}</span>
                 </div>
+                <div class="cart-controlwrapper">
+                  <cartcontrol :food="food"></cartcontrol>
+                </div>
               </div>
             </li>
           </ul>
         </li>
       </ul>
     </div>
-    <shopcart :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
+    <shopcart ref="shopcart" :select-foods="selectFoods" :delivery-price="seller.deliveryPrice"
+              :min-price="seller.minPrice"></shopcart>
   </div>
-
 </template>
 <script type='text/ecmascript-6'>
   import BScroll from "better-scroll";
-  import shopcart from "../shopcart/shopcart";
+  import shopcart from "components/shopcart/shopcart";
+  import cartcontrol from 'components/cartcontrol/cartcontrol';
+
   const ERR_OK = 0;
   export default {
     props: {
@@ -68,6 +73,9 @@
           });
         }
       });
+      this.$root.eventHub.$on('cartAdd', (target) => {
+        this.cartAdd(target);
+      });
     },
     methods: {
       selectMenu(index, event) {
@@ -83,6 +91,7 @@
           click: true
         });
         this.foodsScroll = new BScroll(this.$refs.foodsWarpper, {
+          click: true,
           probeType: 3
         });
 
@@ -99,6 +108,12 @@
           height += item.clientHeight;
           this.listHeight.push(height);
         }
+      },
+      cartAdd(target) {
+        // 体验优化,异步执行下落动画
+        this.$nextTick(() => {
+          this.$refs.shopcart.drop(target);
+        });
       }
     },
     computed: {
@@ -111,10 +126,22 @@
           }
         }
         return 0;
+      },
+      selectFoods() {
+        let foods = [];
+        this.goods.forEach((good) => {
+          good.foods.forEach((food) => {
+            if (food.count) {
+              foods.push(food);
+            }
+          });
+        });
+        return foods;
       }
     },
     components: {
-      shopcart
+      shopcart,
+      cartcontrol
     }
   };
 </script>
@@ -244,7 +271,11 @@
               color: rgb(147, 153, 159);
             }
           }
-
+          .cart-controlwrapper {
+            position: absolute;
+            right: 0;
+            bottom: 12px;
+          }
         }
       }
     }
