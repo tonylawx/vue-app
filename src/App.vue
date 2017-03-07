@@ -6,7 +6,7 @@
       <div class="tab-item"><router-link to="/ratings">评论</router-link></div>
       <div class="tab-item"><router-link to="/seller">商家</router-link></div>
     </div>
-    <router-view :seller="seller"></router-view>
+    <router-view :seller="seller" ref="food"></router-view>
   </div>
 </template>
 
@@ -23,11 +23,11 @@
         created() {
           this.$http.get('/api/seller').then((response) => {
           // .body返回的才是Object对象
-            response = response.body;
+             let data = response.data.data;
             // 判断errno是否为0
-            if (response.errno === ERR_OK) {
-              this.seller = response.data;
-            }
+             if (response.data.errno === ERR_OK) {
+               this.seller = data;
+             }
           });
         },
         components: {

@@ -5,7 +5,7 @@ import App from './App';
 // 引入vue-router
 import VueRouter from 'vue-router';
 // 引入vue-resource
-import VueResource from 'vue-resource';
+import Axios from 'axios';
 import goods from './components/goods/goods';
 import ratings from './components/ratings/ratings';
 import sellers from './components/seller/sellers';
@@ -14,7 +14,8 @@ import 'common/sass/index.scss';
 
 // Vue注册组件
 Vue.use(VueRouter);
-Vue.use(VueResource);
+// 给Vue原形上添加axios
+Vue.prototype.$http = Axios;
 
 const router = new VueRouter({
   routes: [

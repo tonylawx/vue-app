@@ -1,12 +1,12 @@
 <template>
   <div class="cartcontrol">
     <transition name="move">
-      <div class="cart-decrease" v-show='food.count>0' @click="decreaseCart">
+      <div class="cart-decrease" v-show='food.count>0' @click.stop.prevent="decreaseCart">
         <span class="inner icon-remove_circle_outline"></span>
       </div>
     </transition>
     <div class="cart-count" v-show='food.count>0'>{{food.count}}</div>
-    <div class="cart-add icon-add_circle" @click="addCart"></div>
+    <div class="cart-add icon-add_circle" @click.stop.prevent="addCart"></div>
   </div>
 </template>
 <script type='text/ecmascript-6'>
@@ -44,7 +44,7 @@
       display: inline-block;
       padding: 6px;
       transition: all .2s linear;
-      &.move-enter-active, &.move-leave-active{
+      &.move-enter-active, &.move-leave-active {
         opacity: 1;
         transform: translate3d(0, 0, 0);
       }
@@ -55,10 +55,10 @@
         color: rgb(0, 160, 220);
         transition: all .2s linear;
       }
-      &.move-enter, &.move-leave-active{
+      &.move-enter, &.move-leave-active {
         opacity: 0;
         transform: translate3d(24px, 0, 0);
-        .inner{
+        .inner {
           transform: rotate(180deg);
         }
       }
