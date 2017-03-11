@@ -19,12 +19,9 @@ Vue.prototype.$http = Axios;
 
 const router = new VueRouter({
   routes: [
-    { path: '/',
-      component: App,
-      children: [
         {
           path: '/',
-          component: goods
+          redirect: '/goods'
         },
         {
           path: '/goods',
@@ -39,8 +36,6 @@ const router = new VueRouter({
           component: sellers
         }
       ]
-    }
-  ]
 });
 
 const app = new Vue({
@@ -49,5 +44,5 @@ const app = new Vue({
   data: {
     eventHub: new Vue()
   },
-  template: '<router-view></router-view>'
+  render: h => h(App)
 });
