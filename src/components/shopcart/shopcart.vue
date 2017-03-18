@@ -239,6 +239,9 @@
           border-radius: 50%;
           box-sizing: border-box;
           background: #141d27;
+          @media (max-width: 320px) {
+            margin: 0 5px;
+          }
           .logo {
             width: 100%;
             height: 100%;
@@ -283,6 +286,9 @@
           border-right: 1px solid rgba(255, 255, 255, 0.1);
           font-size: 16px;
           font-weight: 700;
+          @media (max-width: 320px) {
+            font-size: 10px;
+          }
           &.highlight {
             color: #fff;
           }
@@ -293,6 +299,9 @@
           margin: 12px 0 0 12px;
           line-height: 24px;
           font-size: 10px;
+          @media (max-width: 320px) {
+            font-size: 7px;
+          }
         }
       }
       .content-right {

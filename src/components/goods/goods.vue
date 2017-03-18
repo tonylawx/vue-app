@@ -253,8 +253,7 @@
             color: rgb(7, 17, 27);
           }
           .desc, .extra {
-            height: 14px;
-            line-height: 14px;
+            line-height: 10px;
             font-size: 10px;
             color: rgb(147, 153, 159);
           }
@@ -265,7 +264,7 @@
           .extra {
             line-height: 10px;
             .count {
-              margin-left: 12px;
+              margin-right: 12px;
             }
           }
           .price {
