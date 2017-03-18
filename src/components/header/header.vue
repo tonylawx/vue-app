@@ -223,6 +223,9 @@
         vertical-align: top;
         font-size: 10px;
         margin: 0 4px;
+        @media (max-width: 320px) {
+          font-size:7px;
+        }
       }
       .icon-keyboard_arrow_right {
         position: absolute;

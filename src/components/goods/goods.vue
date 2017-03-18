@@ -247,7 +247,6 @@
           flex: 1;
           .name {
             margin: 2px 0 8px 0;
-            height: 14px;
             line-height: 14px;
             font-size: 14px;
             color: rgb(7, 17, 27);
