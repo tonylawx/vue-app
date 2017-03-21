@@ -24,7 +24,7 @@
         </div>
       </div>
       <split></split>
-      <ratingselect :select-type='selectType' :only-content="onlyContent" :desc="desc"
+      <ratingselect @ratingtypeSelect="selectRating" @contentToggle="toggleContent" :select-type='selectType' :only-content="onlyContent" :desc="desc"
                     :ratings="ratings"></ratingselect>
       <div class="rating-warpper">
         <ul>
@@ -91,18 +91,6 @@
           });
         }
       });
-      this.$root.eventHub.$on('ratingtypeSelect', (type) => {
-        this.selectType = type;
-        this.$nextTick(() => {
-          this.scroll.refresh();
-        });
-      });
-      this.$root.eventHub.$on('contentToggle', () => {
-        this.onlyContent = !this.onlyContent;
-        this.$nextTick(() => {
-          this.scroll.refresh();
-        });
-      });
     },
     components: {
       star,
@@ -125,6 +113,18 @@
         } else {
           return type === this.selectType;
         }
+      },
+      selectRating(type) {
+        this.selectType = type;
+        this.$nextTick(() => {
+          this.scroll.refresh();
+        });
+      },
+      toggleContent() {
+        this.onlyContent = !this.onlyContent;
+        this.$nextTick(() => {
+          this.scroll.refresh();
+        });
       }
     }
   };

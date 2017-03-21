@@ -62,13 +62,13 @@
         if (!event._constructed) {
           return;
         }
-        this.$root.eventHub.$emit('ratingtypeSelect', type);
+        this.$emit('ratingtypeSelect', type);
       },
       toggleContent(event) {
         if (!event._constructed) {
           return;
         }
-         this.$root.eventHub.$emit('contentToggle');
+         this.$emit('contentToggle');
       }
     }
   };

@@ -35,7 +35,7 @@
         <split></split>
         <div class="rating">
           <h1 class="title">商品评价</h1>
-          <ratingselect :select-type='selectType' :only-content="onlyContent" :desc="desc"
+          <ratingselect @ratingtypeSelect="selectRating" @contentToggle="toggleContent" :select-type='selectType' :only-content="onlyContent" :desc="desc"
                         :ratings="food.ratings"></ratingselect>
           <div class="rating-wrapper">
             <ul v-show="food.ratings && food.ratings.length">
@@ -119,26 +119,24 @@
         } else {
           return type === this.selectType;
         }
+      },
+      selectRating(type) {
+        this.selectType = type;
+        this.$nextTick(() => {
+          this.scroll.refresh();
+        });
+      },
+      toggleContent() {
+        this.onlyContent = !this.onlyContent;
+        this.$nextTick(() => {
+          this.scroll.refresh();
+        });
       }
     },
     components: {
       cartcontrol,
       split,
       ratingselect
-    },
-    created() {
-      this.$root.eventHub.$on('ratingtypeSelect', (type) => {
-        this.selectType = type;
-        this.$nextTick(() => {
-          this.scroll.refresh();
-        });
-      });
-      this.$root.eventHub.$on('contentToggle', () => {
-        this.onlyContent = !this.onlyContent;
-        this.$nextTick(() => {
-          this.scroll.refresh();
-        });
-      });
     },
     filters: {
       formatDate(time) {

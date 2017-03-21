@@ -18,6 +18,7 @@ Vue.use(VueRouter);
 Vue.prototype.$http = Axios;
 
 const router = new VueRouter({
+  linkActiveClass: 'active',
   routes: [
         {
           path: '/',
