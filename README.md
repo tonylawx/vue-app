@@ -32,8 +32,7 @@ Vue.js更容易上手,学习曲线平稳
 + 页面不过是组件的容器,组件可以嵌套自由组合形成完整的页面  
 
 # 在线演示地址
-<img src="https://raw.githubusercontent.com/SingularityXD/vue-app/master/src/1490106774.png
-">
+<img src="./src/qr.png">
 
 # 项目运行
 + 安装依赖  
